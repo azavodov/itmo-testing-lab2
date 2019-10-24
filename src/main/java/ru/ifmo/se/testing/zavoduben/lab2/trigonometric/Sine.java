@@ -18,9 +18,8 @@ public class Sine implements DoubleUnaryOperator {
             throw new IllegalArgumentException("Sine is not defined at infinity");
         }
         if (Double.isNaN(x)) {
-            throw new IllegalArgumentException("Sinw is not defined for NaN");
+            throw new IllegalArgumentException("Sine is not defined for NaN");
         }
-
         double y = 0.0;
         for (int i = 0; i < this.numTerms; i++) {
             y += Math.pow(-1, i) * Math.pow(x, 1 + 2 * i) / (this.factorial(1 + 2 * i));
