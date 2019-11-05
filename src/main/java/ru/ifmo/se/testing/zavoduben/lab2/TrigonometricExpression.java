@@ -1,8 +1,9 @@
 package ru.ifmo.se.testing.zavoduben.lab2;
 
+import javafx.util.Pair;
 import ru.ifmo.se.testing.zavoduben.lab2.trigonometric.Trigonometric;
 
-public class TrigonometricExpression {
+public class TrigonometricExpression implements SolverModule{
 
     private Trigonometric t;
 
@@ -15,4 +16,8 @@ public class TrigonometricExpression {
                 Math.pow((t.csc(x) * t.csc(Math.pow(x, 2)) / (t.sec(x) * (t.tan(x) / t.cos(x)))), 3);
     }
 
+    @Override
+    public Pair<String, Double> result(Double x) {
+        return new Pair<String, Double>("Trigonometric expression", this.solve(x));
+    }
 }

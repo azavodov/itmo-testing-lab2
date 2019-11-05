@@ -1,6 +1,8 @@
 package ru.ifmo.se.testing.zavoduben.lab2;
 
-public class SystemSolver {
+import javafx.util.Pair;
+
+public class SystemSolver implements SolverModule {
 
     private LogarithmExpression logarithmExpression;
     private TrigonometricExpression trigonometricExpression;
@@ -16,6 +18,11 @@ public class SystemSolver {
         } else {
             return this.logarithmExpression.solve(x);
         }
+    }
+
+    @Override
+    public Pair<String, Double> result(Double x) {
+        return new Pair<String, Double>("System", this.solve(x));
     }
 
 }

@@ -1,8 +1,9 @@
 package ru.ifmo.se.testing.zavoduben.lab2;
 
+import javafx.util.Pair;
 import ru.ifmo.se.testing.zavoduben.lab2.logarithm.Logarithm;
 
-public class LogarithmExpression {
+public class LogarithmExpression implements SolverModule {
 
     private Logarithm l;
 
@@ -15,4 +16,8 @@ public class LogarithmExpression {
                 (l.log10(x) * (l.log5(x) - l.log5(x)) - l.ln(x));
     }
 
+    @Override
+    public Pair<String, Double> result(Double x) {
+        return new Pair<String, Double>("Logarithm expression", this.solve(x));
+    }
 }

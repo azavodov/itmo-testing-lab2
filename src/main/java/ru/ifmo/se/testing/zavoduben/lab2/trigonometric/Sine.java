@@ -1,8 +1,11 @@
 package ru.ifmo.se.testing.zavoduben.lab2.trigonometric;
 
+import javafx.util.Pair;
+import ru.ifmo.se.testing.zavoduben.lab2.SolverModule;
+
 import java.util.function.DoubleUnaryOperator;
 
-public class Sine implements DoubleUnaryOperator {
+public class Sine implements DoubleUnaryOperator, SolverModule {
 
     private int numTerms;
 
@@ -30,6 +33,11 @@ public class Sine implements DoubleUnaryOperator {
     private double factorial(int n) {
         if (n == 0) return 1;
         return n * factorial(n - 1);
+    }
+
+    @Override
+    public Pair<String, Double> result(Double x) {
+        return new Pair<String, Double>("Sine", this.getValue(x));
     }
 
 }

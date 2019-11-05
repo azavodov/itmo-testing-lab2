@@ -1,8 +1,11 @@
 package ru.ifmo.se.testing.zavoduben.lab2.logarithm;
 
+import javafx.util.Pair;
+import ru.ifmo.se.testing.zavoduben.lab2.SolverModule;
+
 import java.util.function.DoubleUnaryOperator;
 
-public class NaturalLogarithm implements DoubleUnaryOperator {
+public class NaturalLogarithm implements DoubleUnaryOperator, SolverModule {
 
     private int numTerms;
 
@@ -33,6 +36,11 @@ public class NaturalLogarithm implements DoubleUnaryOperator {
             result = getValue(x - 1) - result;
         }
         return result;
+    }
+
+    @Override
+    public Pair<String, Double> result(Double x) {
+        return new Pair<String, Double>("Natural Logarithm", this.getValue(x));
     }
 
 }
