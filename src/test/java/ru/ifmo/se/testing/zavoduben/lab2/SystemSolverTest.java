@@ -68,8 +68,7 @@ class SystemSolverTest {
 
         Trigonometric realTrigonometricFunctions = new Trigonometric(realSine);
         Trigonometric trigonometricFunctionsWithMockedSine = new Trigonometric(mockSine);
-        Trigonometric mockTrigonometricFunctions = createMockTrigonometricFunctions(); // todo: написать по аналогии с createMockLogarithmFunctions()
-
+        Trigonometric mockTrigonometricFunctions = createMockTrigonometricFunctions();
 
         LogarithmExpression realLogarithmExpression = new LogarithmExpression(realLogarithmFunctions);
         LogarithmExpression logarithmExpressionWithMockedFunctions = new LogarithmExpression(mockLogarithmFunctions);
@@ -100,6 +99,40 @@ class SystemSolverTest {
             SystemSolver testSubject = entry.getValue();
             return DynamicContainer.dynamicContainer(testGroupName, testsForSubject(testSubject));
         });
+    }
+
+    private Trigonometric createMockTrigonometricFunctions() {
+        return new Trigonometric(null) {
+            @Override
+            public double sin(double x) {
+                return Math.sin(x);
+            }
+
+            @Override
+            public double cos(double x) {
+                return Math.cos(x);
+            }
+
+            @Override
+            public double sec(double x) {
+                return 1 / Math.cos(x);
+            }
+
+            @Override
+            public double csc(double x) {
+                return 1 / Math.sin(x);
+            }
+
+            @Override
+            public double tan(double x) {
+                return Math.tan(x);
+            }
+
+            @Override
+            public double cot(double x) {
+                return 1 / Math.tan(x);
+            }
+        };
     }
 
     private Logarithm createMockLogarithmFunctions() {
