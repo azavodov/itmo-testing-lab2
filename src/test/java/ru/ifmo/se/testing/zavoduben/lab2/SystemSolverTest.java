@@ -11,8 +11,7 @@ import java.util.Random;
 import java.util.function.DoubleUnaryOperator;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.withPrecision;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 class SystemSolverTest {
@@ -165,7 +164,16 @@ class SystemSolverTest {
     }
 
     private TrigonometricExpression createMockTrigonometricExpression() {
-        return null;
+        return new TrigonometricExpression(null) {
+            @Override
+            public double solve(double x) {
+                return (Math.pow(Math.pow(1 / Math.tan(x) - Math.tan(x), 2), 3) -
+                        (Math.tan(x) + 1 / Math.cos(x))) -
+                       Math.pow((1 / Math.sin(x) *
+                                 1 / Math.sin(Math.pow(x, 2)) /
+                                 (1 / Math.cos(x) * (Math.tan(x) / Math.cos(x)))), 3);
+            }
+        };
     }
 
     private SolverModule createMockLogarithmExpression() {
@@ -198,22 +206,19 @@ class SystemSolverTest {
                 dynamicTest("at 0 returns trigonometric expression", () -> {
                     double x = 0.0D;
                     assertThat(testSubject.solve(x))
-                            .isEqualTo(trigonometricExpression.solve(x),
-                                    withPrecision(10D));
+                            .isEqualTo(trigonometricExpression.solve(x));
                 }),
 
                 dynamicTest("at negative returns trigonometric expression", () -> {
                     double x = -Math.abs(new Random().nextInt());
                     assertThat(testSubject.solve(x))
-                            .isEqualTo(trigonometricExpression.solve(x),
-                                    withPrecision(10D));
+                            .isEqualTo(trigonometricExpression.solve(x));
                 }),
 
                 dynamicTest("at positive returns logarithmic expression", () -> {
                     double x = +Math.abs(new Random().nextInt(MAX_ARGUMENT_VALUE_FOR_LOG));
                     assertThat(testSubject.solve(x))
-                            .isEqualTo(logarithmicExpression.solve(x),
-                                    withPrecision(10D));
+                            .isEqualTo(logarithmicExpression.solve(x));
                 })
         );
     }
