@@ -24,28 +24,24 @@ class SystemSolverTest {
         this.testSubject = new SystemSolver(logarithmicExpression, trigonometricExpression);
     }
 
-    @Nested
-    class UnitTests {
+    @Test
+    void solve_atZero_takesTrigonometric() {
+        double x = 0.0D;
+        assertThat(testSubject.solve(x))
+                .isEqualTo(trigonometricExpression.solve(x));
+    }
 
-        @Test
-        void solve_atZero_takesTrigonometric() {
-            double x = 0.0D;
-            assertThat(testSubject.solve(x))
-                    .isEqualTo(trigonometricExpression.solve(x));
-        }
+    @Test
+    void solve_atNegative_takesTrigonometric() {
+        double x = -Math.abs(new Random().nextInt());
+        assertThat(testSubject.solve(x))
+                .isEqualTo(trigonometricExpression.solve(x));
+    }
 
-        @Test
-        void solve_atNegative_takesTrigonometric() {
-            double x = -Math.abs(new Random().nextInt());
-            assertThat(testSubject.solve(x))
-                    .isEqualTo(trigonometricExpression.solve(x));
-        }
-
-        @Test
-        void solve_atPositive_takesLogarithmic() {
-            double x = +Math.abs(new Random().nextInt(MAX_ARGUMENT_VALUE_FOR_LOG));
-            assertThat(testSubject.solve(x))
-                    .isEqualTo(logarithmicExpression.solve(x));
-        }
+    @Test
+    void solve_atPositive_takesLogarithmic() {
+        double x = +Math.abs(new Random().nextInt(MAX_ARGUMENT_VALUE_FOR_LOG));
+        assertThat(testSubject.solve(x))
+                .isEqualTo(logarithmicExpression.solve(x));
     }
 }
