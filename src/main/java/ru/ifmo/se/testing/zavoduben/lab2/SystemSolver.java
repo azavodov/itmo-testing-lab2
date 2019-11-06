@@ -1,7 +1,5 @@
 package ru.ifmo.se.testing.zavoduben.lab2;
 
-import javafx.util.Pair;
-
 public class SystemSolver implements SolverModule {
 
     private LogarithmExpression logarithmExpression;
@@ -21,8 +19,8 @@ public class SystemSolver implements SolverModule {
     }
 
     @Override
-    public Pair<String, Double> evaluate(Double x) {
-        return new Pair<String, Double>("System", this.solve(x));
+    public NamedValue evaluate(Double x) {
+        return NamedValue.make("System", this.solve(x));
     }
 
 }

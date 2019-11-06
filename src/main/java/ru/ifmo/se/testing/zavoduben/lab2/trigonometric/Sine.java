@@ -1,6 +1,6 @@
 package ru.ifmo.se.testing.zavoduben.lab2.trigonometric;
 
-import javafx.util.Pair;
+import ru.ifmo.se.testing.zavoduben.lab2.NamedValue;
 import ru.ifmo.se.testing.zavoduben.lab2.SolverModule;
 
 import java.util.function.DoubleUnaryOperator;
@@ -14,7 +14,9 @@ public class Sine implements DoubleUnaryOperator, SolverModule {
     }
 
     @Override
-    public double applyAsDouble(double x) { return getValue(x); }
+    public double applyAsDouble(double x) {
+        return getValue(x);
+    }
 
     public double getValue(double x) {
         if (Double.isInfinite(x)) {
@@ -36,8 +38,8 @@ public class Sine implements DoubleUnaryOperator, SolverModule {
     }
 
     @Override
-    public Pair<String, Double> evaluate(Double x) {
-        return new Pair<String, Double>("Sine", this.getValue(x));
+    public NamedValue evaluate(Double x) {
+        return NamedValue.make("Sine", this.getValue(x));
     }
 
 }

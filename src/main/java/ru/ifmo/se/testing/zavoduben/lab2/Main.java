@@ -1,6 +1,5 @@
 package ru.ifmo.se.testing.zavoduben.lab2;
 
-import javafx.util.Pair;
 import ru.ifmo.se.testing.zavoduben.lab2.logarithm.NaturalLogarithm;
 import ru.ifmo.se.testing.zavoduben.lab2.trigonometric.Sine;
 
@@ -11,6 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
         String dir = "logs/";
+        if (new File(dir).mkdir()) {
+            System.out.println("Directory " + dir + " created.");
+        }
         int numTerms = 50;
         Main main = new Main();
         main.printResult(new NaturalLogarithm(numTerms), -10.0 ,10.0, 0.01, dir + "ln.csv");
@@ -36,12 +38,12 @@ public class Main {
             Logger logger = new Logger(file);
             Double i = start;
             while (i < end) {
-                Pair<String, Double> res = module.evaluate(i);
-                logger.write(res.getKey(), i, res.getValue());
+                NamedValue res = module.evaluate(i);
+                logger.write(res.name, i, res.value);
                 i += step;
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 
