@@ -1,4 +1,4 @@
-package ru.ifmo.se.testing.zavoduben.lab2.trigonometric.logarithm;
+package ru.ifmo.se.testing.zavoduben.lab2.logarithm;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
