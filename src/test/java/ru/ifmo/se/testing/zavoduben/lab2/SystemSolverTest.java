@@ -59,18 +59,24 @@ class SystemSolverTest {
         DoubleUnaryOperator realSine = new Sine(numTerms);
         DoubleUnaryOperator mockSine = createMockSine();
 
-        Logarithm realLogarithm = null; // todo
-        Trigonometric realTrigonometric = null; // todo
-
         DoubleUnaryOperator realLn = new NaturalLogarithm(numTerms);
         DoubleUnaryOperator mockLn = createMockNaturalLogarithm();
+
+        Logarithm realLogarithmFunctions = null; //
+        Logarithm logarithmFunctionsWithMockedLn = null;
+        Logarithm mockLogarithmFunctions = null; // todo
+
+        Trigonometric realTrigonometricFunctions = null; // todo
+        Trigonometric trigonometricFunctionsWithMockedSine = null; // todo
+        Trigonometric mockTrigonometricFunctions = null; // todo
+
 
         LogarithmExpression realLogarithmExpression = new LogarithmExpression(realLogarithmFunctions);
         LogarithmExpression logarithmExpressionWithMockedFunctions = new LogarithmExpression(mockLogarithmFunctions);
         LogarithmExpression logarithmExpressionWithMockedLn = new LogarithmExpression(logarithmFunctionsWithMockedLn);
         SolverModule mockLogarithmExpression = createMockLogarithmExpression();
 
-        TrigonometricExpression realTrigonometricExpression = new TrigonometricExpression(realLn);
+        TrigonometricExpression realTrigonometricExpression = new TrigonometricExpression(realTrigonometricFunctions);
         TrigonometricExpression trigonometricExpressionWithMockedFunctions = new TrigonometricExpression(mockTrigonometricFunctions);
         TrigonometricExpression trigonometricExpressionWithMockedSine = new TrigonometricExpression(trigonometricFunctionsWithMockedSine);
         TrigonometricExpression mockTrigonometricExpression = createMockTrigonometricExpression();
@@ -80,9 +86,11 @@ class SystemSolverTest {
         solvers.put("fully integrated", new SystemSolver(realLogarithmExpression, realTrigonometricExpression));
 
         solvers.put("withLogExprMocked", new SystemSolver(mockLogarithmExpression, realTrigonometricExpression));
+        solvers.put("withMockedLogFunctions", new SystemSolver(logarithmExpressionWithMockedFunctions, realTrigonometricExpression));
         solvers.put("withNaturalLogarithmMocked", new SystemSolver(logarithmExpressionWithMockedLn, realTrigonometricExpression));
 
         solvers.put("withTrigExprMocked", new SystemSolver(realLogarithmExpression, mockTrigonometricExpression));
+        solvers.put("withMockedTrigFunctions", new SystemSolver(realLogarithmExpression, trigonometricExpressionWithMockedFunctions));
         solvers.put("withSineMocked", new SystemSolver(realLogarithmExpression, trigonometricExpressionWithMockedSine));
 
         solvers.put("fully mocked", new SystemSolver(mockLogarithmExpression, mockTrigonometricExpression));

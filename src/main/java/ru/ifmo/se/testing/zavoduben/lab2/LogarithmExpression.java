@@ -10,6 +10,10 @@ public class LogarithmExpression implements SolverModule {
         this.l = new Logarithm(numTerms);
     }
 
+    public LogarithmExpression(Logarithm logarithm) {
+        this.l = logarithm;
+    }
+
     public double solve(double x) {
         return (Math.pow(Math.pow(l.log5(x) - l.log5(x), 3), 2) / l.log2(x)) +
                 (l.log10(x) * (l.log5(x) - l.log5(x)) - l.ln(x));
