@@ -39,7 +39,7 @@ public class NaturalLogarithm implements DoubleUnaryOperator, SolverModule {
     }
 
     @Override
-    public Pair<String, Double> result(Double x) {
+    public Pair<String, Double> evaluate(Double x) {
         return new Pair<String, Double>("Natural Logarithm", this.getValue(x));
     }
 

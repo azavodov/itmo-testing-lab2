@@ -36,7 +36,7 @@ public class Sine implements DoubleUnaryOperator, SolverModule {
     }
 
     @Override
-    public Pair<String, Double> result(Double x) {
+    public Pair<String, Double> evaluate(Double x) {
         return new Pair<String, Double>("Sine", this.getValue(x));
     }
 

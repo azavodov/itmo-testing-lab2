@@ -4,6 +4,6 @@ import javafx.util.Pair;
 
 public interface SolverModule {
 
-    public Pair<String, Double> result(Double x);
+    public Pair<String, Double> evaluate(Double x);
 
 }

@@ -36,7 +36,7 @@ public class Main {
             Logger logger = new Logger(file);
             Double i = start;
             while (i < end) {
-                Pair<String, Double> res = module.result(i);
+                Pair<String, Double> res = module.evaluate(i);
                 logger.write(res.getKey(), i, res.getValue());
                 i += step;
             }

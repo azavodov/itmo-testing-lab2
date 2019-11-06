@@ -21,7 +21,7 @@ public class SystemSolver implements SolverModule {
     }
 
     @Override
-    public Pair<String, Double> result(Double x) {
+    public Pair<String, Double> evaluate(Double x) {
         return new Pair<String, Double>("System", this.solve(x));
     }
 
