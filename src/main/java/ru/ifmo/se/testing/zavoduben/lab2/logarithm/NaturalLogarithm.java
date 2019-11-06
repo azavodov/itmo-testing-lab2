@@ -18,7 +18,7 @@ public class NaturalLogarithm implements DoubleUnaryOperator, SolverModule {
         return x >= 1 ? -getValue(x) : getValue(x);
     }
 
-    private double getValue(double x) {
+    public double getValue(double x) {
         if (Double.isNaN(x) || x < 0.0) { return Double.NaN; }
         if (0.0 == x) { return Double.NEGATIVE_INFINITY; }
         if (Double.POSITIVE_INFINITY == x) { return Double.POSITIVE_INFINITY; }
