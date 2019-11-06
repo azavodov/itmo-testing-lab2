@@ -1,11 +1,17 @@
 package ru.ifmo.se.testing.zavoduben.lab2.trigonometric;
 
+import java.util.function.DoubleUnaryOperator;
+
 public class Trigonometric {
 
-    private Sine sine;
+    private DoubleUnaryOperator sine;
 
     public Trigonometric(int numTerms) {
         this.sine = new Sine(numTerms);
+    }
+
+    public Trigonometric(DoubleUnaryOperator sine) {
+        this.sine = sine;
     }
 
     public double sin(double x) {

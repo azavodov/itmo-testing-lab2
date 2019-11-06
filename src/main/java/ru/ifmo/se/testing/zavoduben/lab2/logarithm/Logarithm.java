@@ -1,11 +1,17 @@
 package ru.ifmo.se.testing.zavoduben.lab2.logarithm;
 
+import java.util.function.DoubleUnaryOperator;
+
 public class Logarithm {
 
-    private NaturalLogarithm naturalLogarithm;
+    private DoubleUnaryOperator naturalLogarithm;
 
     public Logarithm(int numTerms) {
         this.naturalLogarithm = new NaturalLogarithm(numTerms);
+    }
+
+    public Logarithm(DoubleUnaryOperator naturalLogarithm) {
+        this.naturalLogarithm = naturalLogarithm;
     }
 
     public double ln(double x) {

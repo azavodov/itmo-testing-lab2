@@ -62,13 +62,13 @@ class SystemSolverTest {
         DoubleUnaryOperator realLn = new NaturalLogarithm(numTerms);
         DoubleUnaryOperator mockLn = createMockNaturalLogarithm();
 
-        Logarithm realLogarithmFunctions = null; //
-        Logarithm logarithmFunctionsWithMockedLn = null;
-        Logarithm mockLogarithmFunctions = null; // todo
+        Logarithm realLogarithmFunctions = new Logarithm(realLn);
+        Logarithm logarithmFunctionsWithMockedLn = new Logarithm(mockLn);
+        Logarithm mockLogarithmFunctions = createMockLogarithmFunctions();
 
-        Trigonometric realTrigonometricFunctions = null; // todo
-        Trigonometric trigonometricFunctionsWithMockedSine = null; // todo
-        Trigonometric mockTrigonometricFunctions = null; // todo
+        Trigonometric realTrigonometricFunctions = new Trigonometric(realSine);
+        Trigonometric trigonometricFunctionsWithMockedSine = new Trigonometric(mockSine);
+        Trigonometric mockTrigonometricFunctions = createMockTrigonometricFunctions(); // todo: написать по аналогии с createMockLogarithmFunctions()
 
 
         LogarithmExpression realLogarithmExpression = new LogarithmExpression(realLogarithmFunctions);
@@ -100,6 +100,35 @@ class SystemSolverTest {
             SystemSolver testSubject = entry.getValue();
             return DynamicContainer.dynamicContainer(testGroupName, testsForSubject(testSubject));
         });
+    }
+
+    private Logarithm createMockLogarithmFunctions() {
+        return new Logarithm(null) {
+            @Override
+            public double ln(double x) {
+                return Math.log(x);
+            }
+
+            @Override
+            public double log(double base, double x) {
+                return Math.log(x) / Math.log(base);
+            }
+
+            @Override
+            public double log10(double x) {
+                return Math.log10(x);
+            }
+
+            @Override
+            public double log2(double x) {
+                return Math.log(x) / Math.log(2);
+            }
+
+            @Override
+            public double log5(double x) {
+                return Math.log(x) / Math.log(5);
+            }
+        };
     }
 
     private TrigonometricExpression createMockTrigonometricExpression() {
