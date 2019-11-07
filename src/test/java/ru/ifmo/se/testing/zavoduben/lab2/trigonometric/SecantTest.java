@@ -79,7 +79,7 @@ class SecantFunctionTest {
         double x = Math.PI / 2 + randomPiTimesN();
         System.out.println("x = " + x);
         double actual = testSubject.sec(x);
-        assertThat(actual).isNaN();
+        assertThat(actual).isEqualTo(1.0 / testSubject.cos(x));
     }
 
     @Test

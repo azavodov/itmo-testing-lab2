@@ -206,19 +206,19 @@ class SystemSolverTest {
                 dynamicTest("at 0 returns trigonometric expression", () -> {
                     double x = 0.0D;
                     assertThat(testSubject.solve(x))
-                            .isEqualTo(trigonometricExpression.solve(x));
+                            .isEqualTo(testSubject.trigonometricExpression.applyAsDouble(x));
                 }),
 
                 dynamicTest("at negative returns trigonometric expression", () -> {
                     double x = -Math.abs(new Random().nextInt());
                     assertThat(testSubject.solve(x))
-                            .isEqualTo(trigonometricExpression.solve(x));
+                            .isEqualTo(testSubject.trigonometricExpression.applyAsDouble(x));
                 }),
 
                 dynamicTest("at positive returns logarithmic expression", () -> {
                     double x = +Math.abs(new Random().nextInt(MAX_ARGUMENT_VALUE_FOR_LOG));
                     assertThat(testSubject.solve(x))
-                            .isEqualTo(logarithmicExpression.solve(x));
+                            .isEqualTo(testSubject.logarithmExpression.applyAsDouble(x));
                 })
         );
     }

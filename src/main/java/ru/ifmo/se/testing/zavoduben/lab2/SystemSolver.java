@@ -2,8 +2,8 @@ package ru.ifmo.se.testing.zavoduben.lab2;
 
 public class SystemSolver implements SolverModule {
 
-    private SolverModule logarithmExpression;
-    private SolverModule trigonometricExpression;
+    public SolverModule logarithmExpression;
+    public SolverModule trigonometricExpression;
 
     public SystemSolver(SolverModule logarithmExpression,
                         SolverModule trigonometricExpression) {
