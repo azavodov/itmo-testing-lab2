@@ -21,17 +21,17 @@ public class NaturalLogarithmTest {
 
     @Test
     void getValue_atNan_isNan() {
-        assertThat(testSubject.getValue(Double.NaN)).isEqualTo(Double.NaN);
+        assertThat(testSubject.applyAsDouble(Double.NaN)).isEqualTo(Double.NaN);
     }
 
     @Test
     void getValue_atNegative_isNan() {
-        assertThat(testSubject.getValue(-Math.random())).isEqualTo(Double.NaN);
+        assertThat(testSubject.applyAsDouble(-Math.random())).isEqualTo(Double.NaN);
     }
 
     @Test
     void getValue_atZero_isMinusInfinity() {
-        assertThat(testSubject.getValue(0.0D)).isEqualTo(Double.NEGATIVE_INFINITY);
+        assertThat(testSubject.applyAsDouble(0.0D)).isEqualTo(Double.NEGATIVE_INFINITY);
     }
 
 }
